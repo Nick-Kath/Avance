@@ -1,13 +1,13 @@
 const menu = document.querySelector('.marino');
 const navegación = document.querySelector('.navegación');
 const imagenes = document.querySelectorAll('img');
-const btnMarino = document.querySelectorAll('.marino');
-const btnDulce = document.querySelectorAll('.dulce');
-const contenedorTipos = document.querySelector('.tipos');
-
+const btnMarino = document.querySelector('.marino-menu');
+const btnDulce = document.querySelector('.dulce');
+const contenedorTipo = document.querySelector('.tipos');
 
 document.addEventListener('DOMContentLoaded', ()=>{
     eventos();
+    tipos();
 });
 
 
@@ -65,27 +65,29 @@ const cerrarMenu = (boton, overlay) =>{
 }
 
 const tipos = () =>{
-    let  tiposArreglo = [];
+    let tiposArreglo = [];
     const tipos = document.querySelectorAll('.tipo');
 
-    tipos.forEach(tipo=> tiposArreglo = [...tiposArreglo,tipo])
+    tipos.forEach(tipo=> tiposArreglo = [...tiposArreglo, tipo])
+    const marino = tiposArreglo.filter(marino=> marino.getAttribute('data-tipo') === 'marino');
+    const dulce = tiposArreglo.filter (dulce => dulce.getAttribute('data-tipo') === 'dulce');
 
-    const marinos = tiposArreglo.filter(marino => marino.getAttribute('data-tipo') === 'marino');
-    const dulces = tiposArreglo.filter(dulce => dulce.getAttribute('data-tipo') === 'dulce');
-
-
-    mostrarTipos(marinos,dulces);
+    mostrarTipos(marino, dulce);
 }
 
-const mostrarTipos = (marinos, dulces) =>{
-    btnMarino.addEventListener('click', ()=> {
-        limpiarHtml(contenedorTipos);
-        marinos.forEach(marino=> contenedorTipos.appendChild(marino));
-    })
+const mostrarTipos = (marino, dulce) => {
+    btnMarino.addEventListener('click', ()=>{
+        limpiarHtml(contenedorTipo);
+        marino.forEach(marino=> contenedorTipo.appendChild(marino));
+    });
+    btnDulce.addEventListener('click', ()=>{
+        limpiarHtml(contenedorTipo);
+        dulce.forEach(dulce=> contenedorTipo.appendChild(dulce));
+    });
 }
 
-const limpiarHtml = (contenedor) =>{
+const limpiarHtml= (contenedor) =>{
     while(contenedor.firstChild){
-        contenedor.removeChild(contenedor.firstChild)
+        contenedor.removeChild(contenedor.firstChild);
     }
 }
