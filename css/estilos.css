@@ -365,7 +365,7 @@ video{
 }
 
 .input-formulario input, .input-formulario textarea{
-    width: 100%;
+    width: 60%;
 }
 .input-formulario input, .input-formulario textarea{
     padding: 1rem 1.6rem;
@@ -375,7 +375,7 @@ video{
     font-family: var(--parrafos);
 }
 .input-formulario textarea{
-    height: 20rem;
+    height: 10rem;
     resize:none;
 }
 
