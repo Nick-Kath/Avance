@@ -132,7 +132,7 @@ img{
 }
 
 .navegación a:nth-child(odd):hover{
-    color: var(--rojo);
+    color: var(--verde);
 }
 
 .navegación a:first-of-type{
